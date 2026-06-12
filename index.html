@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jefrith's Cybersecurity Journal</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600;700&display=swap');
+    :root { --bg:#0d1117;--surface:#161b22;--surface2:#1c2128;--border:#30363d;--green:#39d353;--green-dim:#196c2e;--cyan:#58a6ff;--yellow:#e3b341;--text:#e6edf3;--text-muted:#8b949e;--text-dim:#484f58; }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;min-height:100vh}
+    header{border-bottom:1px solid var(--border);padding:2rem 0 1.5rem;text-align:center;position:relative;overflow:hidden}
+    header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top,rgba(57,211,83,.06) 0%,transparent 70%);pointer-events:none}
+    .terminal-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--green);background:rgba(57,211,83,.1);border:1px solid rgba(57,211,83,.3);padding:.25rem .75rem;border-radius:2rem;margin-bottom:1rem;letter-spacing:.1em}
+    header h1{font-size:2.2rem;font-weight:700;letter-spacing:-.03em}
+    header h1 span{color:var(--green)}
+    header p.subtitle{color:var(--text-muted);font-size:.95rem;margin-top:.4rem}
+    .stats-row{display:flex;justify-content:center;gap:2.5rem;margin-top:1.5rem;flex-wrap:wrap}
+    .stat{text-align:center}
+    .stat-value{font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:700;color:var(--green)}
+    .stat-label{font-size:.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em}
+    .container{max-width:860px;margin:0 auto;padding:2rem 1.5rem 5rem}
+    .goal-card{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:8px;padding:1.25rem 1.5rem;margin-bottom:2.5rem;display:flex;align-items:flex-start;gap:1rem}
+    .goal-icon{font-size:1.5rem;flex-shrink:0;margin-top:.1rem}
+    .goal-card h3{font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--green);margin-bottom:.3rem}
+    .goal-card p{color:var(--text-muted);font-size:.9rem}
+    .skills-section{margin-bottom:2.5rem}
+    .section-title{font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:var(--text-muted);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+    .section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:.75rem}
+    .skill-item{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:.75rem 1rem}
+    .skill-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem}
+    .skill-name{font-size:.85rem;color:var(--text)}
+    .skill-pct{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--green)}
+    .progress-bar{height:4px;background:var(--surface2);border-radius:2px;overflow:hidden}
+    .progress-fill{height:100%;background:linear-gradient(90deg,var(--green-dim),var(--green));border-radius:2px}
+    .timeline{position:relative}
+    .timeline::before{content:'';position:absolute;left:1.25rem;top:0;bottom:0;width:1px;background:var(--border)}
+    .week-chapter{position:relative;padding-left:3.5rem;margin-bottom:2rem}
+    .week-dot{position:absolute;left:.6rem;top:1.2rem;width:1.25rem;height:1.25rem;border-radius:50%;background:var(--green);border:3px solid var(--bg);box-shadow:0 0 0 2px var(--green)}
+    .week-dot.future{background:var(--surface2);box-shadow:0 0 0 2px var(--border)}
+    .week-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+    .week-header{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;cursor:pointer;user-select:none;gap:1rem}
+    .week-header:hover{background:var(--surface2)}
+    .week-meta{display:flex;align-items:center;gap:.75rem;flex:1;min-width:0}
+    .week-label{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--green);background:rgba(57,211,83,.1);border:1px solid rgba(57,211,83,.25);padding:.2rem .6rem;border-radius:4px;white-space:nowrap;flex-shrink:0}
+    .week-label.future{color:var(--text-dim);background:transparent;border-color:var(--border)}
+    .week-title{font-size:.95rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .week-status{font-size:.75rem;padding:.2rem .6rem;border-radius:4px;white-space:nowrap;flex-shrink:0}
+    .status-done{background:rgba(57,211,83,.12);color:var(--green)}
+    .status-progress{background:rgba(88,166,255,.12);color:var(--cyan)}
+    .status-pending{background:var(--surface2);color:var(--text-dim)}
+    .chevron{color:var(--text-muted);font-size:.7rem;flex-shrink:0}
+    .week-body{display:none;padding:0 1.25rem 1.25rem;border-top:1px solid var(--border)}
+    .week-body.open{display:block}
+    .week-dates{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text-muted);padding:.75rem 0 1rem}
+    .entry{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:1rem 1.1rem;margin-bottom:.75rem}
+    .entry:last-child{margin-bottom:0}
+    .entry-tag{display:inline-block;font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;padding:.15rem .55rem;border-radius:3px;margin-bottom:.5rem}
+    .tag-platform{background:rgba(88,166,255,.15);color:var(--cyan)}
+    .tag-concept{background:rgba(227,179,65,.15);color:var(--yellow)}
+    .tag-language{background:rgba(139,148,158,.15);color:var(--text-muted)}
+    .entry h4{font-size:.92rem;font-weight:600;margin-bottom:.5rem}
+    .entry ul{list-style:none;padding:0}
+    .entry ul li{font-size:.85rem;color:var(--text-muted);padding:.2rem 0 .2rem 1.1rem;position:relative}
+    .entry ul li::before{content:'▸';position:absolute;left:0;color:var(--green);font-size:.7rem}
+    .entry ul li strong{color:var(--text)}
+    .vocab-grid{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem}
+    .vocab-pill{font-family:'JetBrains Mono',monospace;font-size:.7rem;background:rgba(57,211,83,.08);border:1px solid rgba(57,211,83,.2);color:var(--green);padding:.2rem .55rem;border-radius:3px}
+    .key-insight{margin-top:.75rem;padding:.6rem .85rem;background:rgba(57,211,83,.06);border-left:2px solid var(--green);border-radius:0 4px 4px 0;font-size:.82rem;color:var(--text-muted)}
+    .key-insight span{color:var(--green);font-weight:600}
+    .future-hint{font-size:.82rem;color:var(--text-dim);font-style:italic;padding:.75rem 0}
+    footer{text-align:center;padding:2rem;border-top:1px solid var(--border);font-size:.78rem;color:var(--text-dim);font-family:'JetBrains Mono',monospace}
+    footer a{color:var(--green);text-decoration:none}
+    @media(max-width:600px){header h1{font-size:1.6rem}.stats-row{gap:1.5rem}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="terminal-badge">// learning in public</div>
+  <h1>Jefrith's <span>Cybersecurity</span> Journal</h1>
+  <p class="subtitle">Aspiring Penetration Tester · Colombia 🇨🇴 · Road to OSCP</p>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-value">1</div><div class="stat-label">Week Active</div></div>
+    <div class="stat"><div class="stat-value">3</div><div class="stat-label">Modules Done</div></div>
+    <div class="stat"><div class="stat-value">7</div><div class="stat-label">Vocab Cards</div></div>
+    <div class="stat"><div class="stat-value">OSCP</div><div class="stat-label">Final Goal</div></div>
+  </div>
+</header>
+<main class="container">
+  <div class="goal-card">
+    <div class="goal-icon">🎯</div>
+    <div><h3>Current Goal</h3><p>Build toward OSCP and a freelance pentesting career — starting from zero, one module at a time.</p></div>
+  </div>
+  <div class="skills-section">
+    <div class="section-title">Current Skill Progress</div>
+    <div class="skills-grid">
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">Networking Fundamentals</span><span class="skill-pct">15%</span></div><div class="progress-bar"><div class="progress-fill" style="width:15%"></div></div></div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">Web Security Basics</span><span class="skill-pct">10%</span></div><div class="progress-bar"><div class="progress-fill" style="width:10%"></div></div></div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">Linux for Security</span><span class="skill-pct">10%</span></div><div class="progress-bar"><div class="progress-fill" style="width:10%"></div></div></div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">Technical English</span><span class="skill-pct">5%</span></div><div class="progress-bar"><div class="progress-fill" style="width:5%"></div></div></div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">Offensive Security Mindset</span><span class="skill-pct">8%</span></div><div class="progress-bar"><div class="progress-fill" style="width:8%"></div></div></div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">TryHackMe Progress</span><span class="skill-pct">3%</span></div><div class="progress-bar"><div class="progress-fill" style="width:3%"></div></div></div>
+    </div>
+  </div>
+  <div class="section-title">Weekly Chapters</div>
+  <div class="timeline">
+    <div class="week-chapter">
+      <div class="week-dot"></div>
+      <div class="week-card">
+        <div class="week-header" onclick="toggle(this)">
+          <div class="week-meta"><span class="week-label">Week 01</span><span class="week-title">The Beginning — Starting from Zero</span></div>
+          <span class="week-status status-done">✓ Done</span><span class="chevron">▼</span>
+        </div>
+        <div class="week-body open">
+          <div class="week-dates">📅 Jun 9 – Jun 12, 2026</div>
+          <div class="entry">
+            <span class="entry-tag tag-platform">TryHackMe</span>
+            <h4>Module 1 — Intro to Cybersecurity</h4>
+            <ul>
+              <li>Offensive Security: thinking like an attacker to find vulnerabilities</li>
+              <li>Defensive Security: monitoring, incident response, threat intel</li>
+              <li>Careers in Cyber: paths, roles, what the industry looks like</li>
+            </ul>
+            <div class="key-insight"><span>Key insight:</span> Authorization is the entire legal and ethical foundation of ethical hacking. No auth, no job — just crime.</div>
+          </div>
+          <div class="entry">
+            <span class="entry-tag tag-concept">Concepts</span>
+            <h4>Fundamentals Covered</h4>
+            <ul>
+              <li>Networking: TCP/IP, OSI model, ports &amp; protocols</li>
+              <li>Web security basics: HTTP, DNS, common vulnerabilities</li>
+              <li>Linux for security professionals</li>
+              <li>Platforms: <strong>TryHackMe</strong> · <strong>Hack The Box</strong></li>
+            </ul>
+            <div class="key-insight"><span>Key insight:</span> Defense is always harder than offense. Attackers need one gap. Defenders need to close all of them.</div>
+          </div>
+          <div class="entry">
+            <span class="entry-tag tag-language">Technical English</span>
+            <h4>Day 1 — 24-Week System</h4>
+            <ul>
+              <li>Goal: read CVEs, exploit writeups, documentation without getting blocked</li>
+              <li>System: Anki every morning · 1 article/week · unknown words → flashcard same day</li>
+              <li>First session: 7 cards, 15 minutes</li>
+            </ul>
+            <div class="vocab-grid">
+              <span class="vocab-pill">boolean-based blind injection</span>
+              <span class="vocab-pill">unauthenticated</span>
+              <span class="vocab-pill">user-supplied input</span>
+              <span class="vocab-pill">verbose</span>
+              <span class="vocab-pill">exposed</span>
+            </div>
+            <div class="key-insight"><span>Key insight:</span> Technical English is not fluent English. I need to read CVEs, not watch Netflix.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="week-chapter">
+      <div class="week-dot future"></div>
+      <div class="week-card">
+        <div class="week-header" onclick="toggle(this)">
+          <div class="week-meta"><span class="week-label future">Week 02</span><span class="week-title" style="color:var(--text-muted)">Coming next week...</span></div>
+          <span class="week-status status-progress">In progress</span><span class="chevron">▶</span>
+        </div>
+        <div class="week-body"><p class="future-hint">This chapter will be updated at the end of the week.</p></div>
+      </div>
+    </div>
+    <div class="week-chapter">
+      <div class="week-dot future"></div>
+      <div class="week-card">
+        <div class="week-header" onclick="toggle(this)">
+          <div class="week-meta"><span class="week-label future">Week 03+</span><span class="week-title" style="color:var(--text-dim)">Chapters ahead</span></div>
+          <span class="week-status status-pending">Pending</span><span class="chevron">▶</span>
+        </div>
+        <div class="week-body"><p class="future-hint">New chapters will appear here each week as the journey progresses.</p></div>
+      </div>
+    </div>
+  </div>
+</main>
+<footer>
+  <p>Built by <a href="https://www.linkedin.com/in/jefrith-madarriaga/" target="_blank">Jefrith Madarriaga</a> · <a href="https://github.com/jefrithdesarrollador-cmd" target="_blank">GitHub</a> · Updated weekly</p>
+  <p style="margin-top:.4rem">// the goal is OSCP. the method is consistency.</p>
+</footer>
+<script>
+function toggle(h){var b=h.nextElementSibling,c=h.querySelector('.chevron'),o=b.classList.contains('open');b.classList.toggle('open',!o);c.textContent=o?'▶':'▼';}
+</script>
+</body>
+</html>
