@@ -81,9 +81,9 @@
   <h1>Jefrith's <span>Cybersecurity</span> Journal</h1>
   <p class="subtitle">Aspiring Penetration Tester · Colombia 🇨🇴 · Road to OSCP</p>
   <div class="stats-row">
-    <div class="stat"><div class="stat-value">1</div><div class="stat-label">Week Active</div></div>
-    <div class="stat"><div class="stat-value">3</div><div class="stat-label">Modules Done</div></div>
-    <div class="stat"><div class="stat-value">7</div><div class="stat-label">Vocab Cards</div></div>
+    <div class="stat"><div class="stat-value">2</div><div class="stat-label">Weeks Active</div></div>
+    <div class="stat"><div class="stat-value">6</div><div class="stat-label">Modules Done</div></div>
+    <div class="stat"><div class="stat-value">15</div><div class="stat-label">Vocab Cards</div></div>
     <div class="stat"><div class="stat-value">OSCP</div><div class="stat-label">Final Goal</div></div>
   </div>
 </header>
@@ -95,12 +95,12 @@
   <div class="skills-section">
     <div class="section-title">Current Skill Progress</div>
     <div class="skills-grid">
-      <div class="skill-item"><div class="skill-header"><span class="skill-name">Networking Fundamentals</span><span class="skill-pct">15%</span></div><div class="progress-bar"><div class="progress-fill" style="width:15%"></div></div></div>
-      <div class="skill-item"><div class="skill-header"><span class="skill-name">Web Security Basics</span><span class="skill-pct">10%</span></div><div class="progress-bar"><div class="progress-fill" style="width:10%"></div></div></div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">Networking Fundamentals</span><span class="skill-pct">20%</span></div><div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div></div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">Web Security Basics</span><span class="skill-pct">30%</span></div><div class="progress-bar"><div class="progress-fill" style="width:30%"></div></div></div>
       <div class="skill-item"><div class="skill-header"><span class="skill-name">Linux for Security</span><span class="skill-pct">10%</span></div><div class="progress-bar"><div class="progress-fill" style="width:10%"></div></div></div>
-      <div class="skill-item"><div class="skill-header"><span class="skill-name">Technical English</span><span class="skill-pct">5%</span></div><div class="progress-bar"><div class="progress-fill" style="width:5%"></div></div></div>
-      <div class="skill-item"><div class="skill-header"><span class="skill-name">Offensive Security Mindset</span><span class="skill-pct">8%</span></div><div class="progress-bar"><div class="progress-fill" style="width:8%"></div></div></div>
-      <div class="skill-item"><div class="skill-header"><span class="skill-name">TryHackMe Progress</span><span class="skill-pct">3%</span></div><div class="progress-bar"><div class="progress-fill" style="width:3%"></div></div></div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">Technical English</span><span class="skill-pct">8%</span></div><div class="progress-bar"><div class="progress-fill" style="width:8%"></div></div></div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">Offensive Security Mindset</span><span class="skill-pct">12%</span></div><div class="progress-bar"><div class="progress-fill" style="width:12%"></div></div></div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">TryHackMe Progress</span><span class="skill-pct">8%</span></div><div class="progress-bar"><div class="progress-fill" style="width:8%"></div></div></div>
     </div>
   </div>
   <div class="section-title">Weekly Chapters</div>
@@ -110,9 +110,9 @@
       <div class="week-card">
         <div class="week-header" onclick="toggle(this)">
           <div class="week-meta"><span class="week-label">Week 01</span><span class="week-title">The Beginning — Starting from Zero</span></div>
-          <span class="week-status status-done">✓ Done</span><span class="chevron">▼</span>
+          <span class="week-status status-done">✓ Done</span><span class="chevron">▶</span>
         </div>
-        <div class="week-body open">
+        <div class="week-body">
           <div class="week-dates">📅 Jun 9 – Jun 12, 2026</div>
           <div class="entry">
             <span class="entry-tag tag-platform">TryHackMe</span>
@@ -156,10 +156,62 @@
       </div>
     </div>
     <div class="week-chapter">
+      <div class="week-dot"></div>
+      <div class="week-card">
+        <div class="week-header" onclick="toggle(this)">
+          <div class="week-meta"><span class="week-label">Week 02</span><span class="week-title">How the Web Works &amp; Computer Fundamentals</span></div>
+          <span class="week-status status-done">✓ Done</span><span class="chevron">▼</span>
+        </div>
+        <div class="week-body open">
+          <div class="week-dates">📅 Jul 7 – Jul 12, 2026</div>
+          <div class="entry">
+            <span class="entry-tag tag-platform">TryHackMe</span>
+            <h4>Module 3 — How the Web Works</h4>
+            <ul>
+              <li>DNS in Detail · HTTP in Detail · How Websites Work · Putting it all together</li>
+              <li>Full HTTP mechanics, plus HTTPS/TLS and asymmetric cryptography</li>
+              <li>The complete chain from browser to server, end to end</li>
+              <li>Cookies and <strong>session hijacking</strong></li>
+            </ul>
+            <div class="key-insight"><span>Key insight:</span> HTTP is stateless — cookies are what make sessions possible in the first place, and that's exactly why session hijacking works: steal the cookie, steal the session.</div>
+          </div>
+          <div class="entry">
+            <span class="entry-tag tag-platform">TryHackMe</span>
+            <h4>Module 4 — Computer Fundamentals</h4>
+            <ul>
+              <li>Inside a Computer System · Computer Types · Client-Server Basics</li>
+              <li>Virtualisation Basics · Cloud Computing Fundamentals</li>
+            </ul>
+            <div class="key-insight"><span>Key insight:</span> Horizontal scaling has no physical ceiling because it doesn't depend on inflating one machine past the hardware market's limit — it depends on switching on more copies. Vertical scaling does have a ceiling, and it almost always demands a restart to "inflate" the machine — the worst possible moment for downtime.</div>
+          </div>
+          <div class="entry">
+            <span class="entry-tag tag-language">Technical English</span>
+            <h4>Vocabulary from this week's sessions</h4>
+            <ul>
+              <li>New terms picked up across both modules — logged here, not yet all turned into Anki cards</li>
+              <li><code>EC2 Auto Scaling</code> flagged as pending: go check the AWS console/docs before calling it learned</li>
+              <li><code>hypervisor</code> came up implicitly in the virtualisation session but was never named explicitly — revisit</li>
+            </ul>
+            <div class="vocab-grid">
+              <span class="vocab-pill">session hijacking</span>
+              <span class="vocab-pill">session token</span>
+              <span class="vocab-pill">TLS handshake</span>
+              <span class="vocab-pill">client-server</span>
+              <span class="vocab-pill">virtualisation</span>
+              <span class="vocab-pill">horizontal scaling</span>
+              <span class="vocab-pill">vertical scaling</span>
+              <span class="vocab-pill">cloud computing</span>
+            </div>
+            <div class="key-insight"><span>Key insight:</span> Piling up new vocabulary without turning it into Anki cards the same day is the obvious gap to close before accumulating more.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="week-chapter">
       <div class="week-dot future"></div>
       <div class="week-card">
         <div class="week-header" onclick="toggle(this)">
-          <div class="week-meta"><span class="week-label future">Week 02</span><span class="week-title" style="color:var(--text-muted)">Coming next week...</span></div>
+          <div class="week-meta"><span class="week-label future">Week 03</span><span class="week-title" style="color:var(--text-muted)">Coming next week...</span></div>
           <span class="week-status status-progress">In progress</span><span class="chevron">▶</span>
         </div>
         <div class="week-body"><p class="future-hint">This chapter will be updated at the end of the week.</p></div>
@@ -169,7 +221,7 @@
       <div class="week-dot future"></div>
       <div class="week-card">
         <div class="week-header" onclick="toggle(this)">
-          <div class="week-meta"><span class="week-label future">Week 03+</span><span class="week-title" style="color:var(--text-dim)">Chapters ahead</span></div>
+          <div class="week-meta"><span class="week-label future">Week 04+</span><span class="week-title" style="color:var(--text-dim)">Chapters ahead</span></div>
           <span class="week-status status-pending">Pending</span><span class="chevron">▶</span>
         </div>
         <div class="week-body"><p class="future-hint">New chapters will appear here each week as the journey progresses.</p></div>
