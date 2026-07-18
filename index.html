@@ -163,7 +163,7 @@
           <span class="week-status status-done">✓ Done</span><span class="chevron">▼</span>
         </div>
         <div class="week-body open">
-          <div class="week-dates">📅 Jul 7 – Jul 12, 2026</div>
+          <div class="week-dates">📅 Jul 7 – Jul 17, 2026</div>
           <div class="entry">
             <span class="entry-tag tag-platform">TryHackMe</span>
             <h4>Module 3 — How the Web Works</h4>
@@ -203,6 +203,19 @@
               <span class="vocab-pill">cloud computing</span>
             </div>
             <div class="key-insight"><span>Key insight:</span> Piling up new vocabulary without turning it into Anki cards the same day is the obvious gap to close before accumulating more.</div>
+          </div>
+          <div class="entry">
+            <span class="entry-tag tag-concept">Concepts</span>
+            <h4>Building My First Pentesting Lab — Windows + Linux Terminal</h4>
+            <ul>
+              <li>Built the base <code>lab-htb/</code> structure (<code>recon</code>, <code>loot</code>, <code>notas</code>) on both Windows and Linux, entirely from the command line — no mouse</li>
+              <li>Practiced navigation and file ops on both systems: <code>cd</code>, <code>pwd</code>, <code>dir</code>/<code>ls</code>, <code>mkdir</code>, <code>del</code>/<code>rm</code>, <code>rmdir</code>, <code>rm -r</code>, <code>Get-Help</code></li>
+              <li>Goal: a repeatable methodology for evidence and findings, ready before touching an actual HTB/TryHackMe box</li>
+              <li>The error that taught the most: <code>mkdir [-loot][-notas]</code> in PowerShell didn't create two folders — square brackets are wildcard metacharacters, not literal text, so it created one folder literally named <code>[-loot][-notas]</code> — a "ghost folder" that <code>del [-loot][-notas]</code> ran against without error yet never deleted, because the pattern matched nothing</li>
+              <li>Fix and new fixed rule: preview with a real wildcard before deleting — <code>dir *notas*</code> to see what matches, only then <code>del *notas*</code></li>
+              <li>Same lesson from the Linux side: Bash does brace expansion (<code>{}</code>) for multiple names, PowerShell/CMD don't; Linux is case-sensitive (<code>config</code> ≠ <code>Config</code>) where Windows is more permissive</li>
+            </ul>
+            <div class="key-insight"><span>Key insight:</span> The terminal doesn't interpret what I meant to type — it executes exactly what I typed. "See before you destroy": confirm with <code>dir</code>/<code>ls</code> what a wildcard actually matches before running the delete. Many bugs — and many vulnerabilities — start from assuming two environments behave the same when they don't.</div>
           </div>
         </div>
       </div>
