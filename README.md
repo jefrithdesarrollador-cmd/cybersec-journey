@@ -1,62 +1,78 @@
 # 📖 Cybersecurity Journey
 
-> A public learning journal documenting my path from zero to OSCP — one week at a time.
+Un diario público de aprendizaje que documenta mi ruta hacia
+la ciberseguridad — semana a semana.
 
-**🌐 Live journal:** [jefrithdesarrollador-cmd.github.io/cybersec-journey](https://jefrithdesarrollador-cmd.github.io/cybersec-journey/)
-
----
-
-## What is this?
-
-This repository hosts my cybersecurity learning journal — a structured, public record of everything I study, practice, and discover on my way to becoming a penetration tester.
-
-The journal is a web page where each week is a chapter: what I learned, what platforms I used, key insights, and technical vocabulary I picked up. Anyone can open it and follow along.
+🌐 **Diario en vivo:** [jefrithdesarrollador-cmd.github.io/cybersec-journey](https://jefrithdesarrollador-cmd.github.io/cybersec-journey/)
 
 ---
 
-## Who am I?
+## ¿Qué es esto?
 
-**Jefrith Madarriaga** — Cybersecurity Learner | Aspiring Penetration Tester | Colombia 🇨🇴
+Este repositorio aloja mi diario de aprendizaje en ciberseguridad:
+un registro público y estructurado de lo que estudio, practico y
+descubro. Cada semana es un capítulo — qué aprendí, qué plataformas
+usé, los conceptos clave y el vocabulario técnico nuevo.
 
-Starting from zero. No degree, no certifications yet. Just consistency and a clear goal: **OSCP**.
-
----
-
-## Current Focus
-
-| Area | Status |
-|------|--------|
-| Networking fundamentals (TCP/IP, OSI, ports) | 🟡 In progress |
-| Web security basics (HTTP, DNS, vulnerabilities) | 🟡 In progress |
-| Linux for security professionals | 🟡 In progress |
-| Technical English for cybersecurity | 🟡 In progress (24-week system) |
-| TryHackMe — Intro to Cybersecurity | ✅ Module 1 complete |
+Documento también los errores y cómo los resuelvo. Esa parte suele
+enseñar más que lo que sale bien a la primera.
 
 ---
 
-## Platforms
+## ¿Quién soy?
+
+**Jefrith Madarriaga** — Técnico en Desarrollo de Software (SENA,
+etapa productiva) · Colombia 🇨🇴
+
+En transición desde el oficio de electricista hacia la
+ciberseguridad. Formación autodidacta constante, con enfoque en
+el área defensiva: fundamentos, sistemas operativos, Linux y
+gestión de identidades y accesos.
+
+**Objetivo:** primer rol formal junior en seguridad.
+**Próxima certificación:** CompTIA Security+
+
+---
+
+## Enfoque actual
+
+| Área | Estado |
+|---|---|
+| Fundamentos de redes (TCP/IP, OSI, puertos) | ✅ Completado |
+| Funcionamiento de la web (HTTP, DNS, cookies) | ✅ Completado |
+| Fundamentos de computación y virtualización | ✅ Completado |
+| Sistemas operativos — Windows y Linux CLI | 🟡 En progreso |
+| Linux para profesionales de seguridad | 🟡 En progreso |
+| Inglés técnico para ciberseguridad | 🟡 En progreso |
+
+**TryHackMe:** 20 salas completadas · Top 25% del ranking global
+
+---
+
+## Plataformas
 
 - [TryHackMe](https://tryhackme.com)
 - [Hack The Box](https://hackthebox.com)
+- Laboratorio propio (Kali Linux)
 
 ---
 
-## How to follow along
+## Sígueme
 
-- 📖 **Read the journal:** [jefrithdesarrollador-cmd.github.io/cybersec-journey](https://jefrithdesarrollador-cmd.github.io/cybersec-journey/)
+- 📖 **Diario:** [jefrithdesarrollador-cmd.github.io/cybersec-journey](https://jefrithdesarrollador-cmd.github.io/cybersec-journey/)
 - 💼 **LinkedIn:** [Jefrith Madarriaga](https://www.linkedin.com/in/jefrith-madarriaga/)
 - 🐙 **GitHub:** [jefrithdesarrollador-cmd](https://github.com/jefrithdesarrollador-cmd)
 
 ---
 
-## Structure
+## Estructura
 
 ```
 cybersec-journey/
-└── index.html   ← The journal web page (updated weekly)
-└── README.md    ← This file
+├── index.html   ← El diario (actualizado semanalmente)
+└── README.md    ← Este archivo
 ```
 
 ---
 
-*Updated weekly. // the goal is OSCP. the method is consistency.*
+*Actualizado semanalmente. // el método es la constancia.*
