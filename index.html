@@ -190,7 +190,7 @@
             <ul>
               <li>New terms picked up across both modules — logged here, not yet all turned into Anki cards</li>
               <li><code>EC2 Auto Scaling</code> flagged as pending: go check the AWS console/docs before calling it learned</li>
-              <li><code>hypervisor</code> came up implicitly in the virtualisation session but was never named explicitly — revisit</li>
+              <li><code>hypervisor</code> came up implicitly in the virtualisation session without being named explicitly — closed the gap later this week, see the Concepts entry below</li>
             </ul>
             <div class="vocab-grid">
               <span class="vocab-pill">session hijacking</span>
@@ -201,6 +201,9 @@
               <span class="vocab-pill">horizontal scaling</span>
               <span class="vocab-pill">vertical scaling</span>
               <span class="vocab-pill">cloud computing</span>
+              <span class="vocab-pill">hypervisor</span>
+              <span class="vocab-pill">Ring -1</span>
+              <span class="vocab-pill">bare-metal</span>
             </div>
             <div class="key-insight"><span>Key insight:</span> Piling up new vocabulary without turning it into Anki cards the same day is the obvious gap to close before accumulating more.</div>
           </div>
@@ -216,6 +219,18 @@
               <li>Same lesson from the Linux side: Bash does brace expansion (<code>{}</code>) for multiple names, PowerShell/CMD don't; Linux is case-sensitive (<code>config</code> ≠ <code>Config</code>) where Windows is more permissive</li>
             </ul>
             <div class="key-insight"><span>Key insight:</span> The terminal doesn't interpret what I meant to type — it executes exactly what I typed. "See before you destroy": confirm with <code>dir</code>/<code>ls</code> what a wildcard actually matches before running the delete. Many bugs — and many vulnerabilities — start from assuming two environments behave the same when they don't.</div>
+          </div>
+          <div class="entry">
+            <span class="entry-tag tag-concept">Concepts</span>
+            <h4>Hypervisors: The Invisible Building Owner</h4>
+            <ul>
+              <li>Reframed the question from "what is a hypervisor" to "how does one machine convince several operating systems each has the whole hardware to itself" — that's where the building analogy clicked: hardware = the building, each VM = a floor, each OS = a tenant, and the hypervisor = the owner, who doesn't live on any floor but sits above all of them, deciding how much of the building each tenant gets and keeping floors from interfering with each other</li>
+              <li><strong>Type 1</strong> (bare-metal) hypervisors run directly on the hardware — the real owner, answering to no one; <strong>Type 2</strong> hypervisors run on top of a host OS, like VirtualBox — more like a hired manager who still answers to the actual owner</li>
+              <li>The puzzle that didn't add up: the kernel runs at <strong>Ring 0</strong>, the highest privilege level — so how can several kernels each believe they're the one in charge at the same time?</li>
+              <li>The answer: <strong>Ring -1</strong>, a privilege level above Ring 0, is where the hypervisor actually runs — handing out CPU time, memory and physical devices while every VM still believes it's alone on the hardware</li>
+              <li>Personal click: Kali on <strong>WSL2</strong> isn't just "another Linux window" — it literally runs on <strong>Hyper-V</strong>, Windows' own hypervisor, used for months without registering what was actually running underneath</li>
+            </ul>
+            <div class="key-insight"><span>Key insight:</span> Virtualisation and an OS isolating processes from each other are the same principle — <strong>isolation</strong> — applied at different layers: each layer hides the complexity below it to offer a controlled, convincing environment above. Understanding the problem a technology solves is what turns a definition from something to memorize into something that actually makes sense.</div>
           </div>
         </div>
       </div>
